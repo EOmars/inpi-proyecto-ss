@@ -1,26 +1,20 @@
-function draw() {
+const sol = document.getElementById('sol')
+const arbol = document.getElementById('arbol')
+const lagartija = document.getElementById('lagartija')
+const vaca = document.getElementById('vaca')
+const pez = document.getElementById('pez')
+const cangrejo = document.getElementById('cangrejo')
+const escorpion = document.getElementById('escorpion')
+const tortuga = document.getElementById('tortuga')
+const vibora = document.getElementById('vibora')
 
-    // Loop through all images
-    for (var i = 0; i < document.images.length; i++) {
+sol.onclick = (e) => document.getElementById('sol-audio').play()
+arbol.onclick = (e) => document.getElementById('arbol-audio').play()
+lagartija.onclick = (e) => document.getElementById('lagartija-audio').play()
+vaca.onclick = (e) => document.getElementById('vaca-audio').play()
+pez.onclick = (e) => document.getElementById('pez-audio').play()
+cangrejo.onclick = (e) => document.getElementById('cangrejo-audio').play()
+escorpion.onclick = (e) => document.getElementById('escorpion-audio').play()
+tortuga.onclick = (e) => document.getElementById('tortuga-audio').play()
+vibora.onclick = (e) => document.getElementById('vibora-audio').play()
 
-        // Don't add a canvas for the frame image
-        if (document.images[i].getAttribute('id') != 'frame') {
-
-            // Create canvas element
-            canvas = document.createElement('canvas');
-            canvas.setAttribute('width', 132);
-            canvas.setAttribute('height', 150);
-
-            // Insert before the image
-            document.images[i].parentNode.insertBefore(canvas, document.images[i]);
-
-            ctx = canvas.getContext('2d');
-
-            // Draw image to canvas
-            ctx.drawImage(document.images[i], 15, 20);
-
-            // Add frame
-            ctx.drawImage(document.getElementById('frame'), 0, 0);
-        }
-    }
-}
