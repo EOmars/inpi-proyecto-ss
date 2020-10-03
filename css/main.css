@@ -16,25 +16,26 @@ body {
 }
 
 .grid {
+    position: absolute;
     display: grid;
     grid-template-columns: repeat(50, 1fr);
-    grid-template-rows: repeat(20,5%);
-    /* grid-auto-rows: minmax(5%,5%); */
+    grid-template-rows: repeat(20, 5%);
+    max-height: 100%;
 }
 
 .sol {
-    grid-column: 20 / 23;
-    grid-row: 1 / 4;
+    grid-column: 20 / 24;
+    grid-row: 1 / 5;
 }
 
 #sol {
     height: 100%;
-    width: 100%;
+    width: 100%;    
 }
 
 .arbol {
-    grid-column: 1 / 14;
-    grid-row: 1 / 9;
+    grid-column: 1 / 15;
+    grid-row: 1 / 10;
 }
 
 #arbol {
@@ -42,19 +43,35 @@ body {
     width: 100%;
 }
 
+.arbol-texto-div{
+    grid-column:  12 ;
+    grid-row: 5;
+}
+
 .vaca {
-    grid-column: 10/20;
-    grid-row: 7/11;
+    grid-column: 10/22;
+    grid-row: 10/22;
+}
+
+.vaca-texto-div{
+    grid-column:  14 ;
+    grid-row: 8;
 }
 
 #vaca {
-    height: 100%;
-    width: 100%;
+  
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.lagartija-texto-div{
+    grid-column:  2 ;
+    grid-row: 15;
 }
 
 .lagartija {
     grid-column: 2/10;
-    grid-row: 10/12;
+    grid-row: 17/25;
 }
 
 #lagartija {
@@ -64,7 +81,7 @@ body {
 
 .cangrejo {
     grid-column: 28/31;
-    grid-row: 8/9;
+    grid-row: 10/13;
 }
 
 #cangrejo {
@@ -72,9 +89,14 @@ body {
     width: 100%;
 }
 
+.cangrejo-texto-div{
+    grid-column:  28 ;
+    grid-row: 7;
+}
+
 .pez {
     grid-column: 23/26;
-    grid-row: 11;
+    grid-row: 16/19;
 }
 
 #pez {
@@ -82,9 +104,14 @@ body {
     width: 100%;
 }
 
+.pez-texto-div{
+    grid-column:  24 ;
+    grid-row: 14;
+}
+
 .escorpion {
     grid-column: 26/32;
-    grid-row: 11;
+    grid-row: 17/22;
 }
 
 #escorpion {
@@ -92,9 +119,14 @@ body {
     width: 100%;
 }
 
+.escorpion-texto-div{
+    grid-column:  20 ;
+    grid-row: 18;
+}
+
 .tortuga {
     grid-column: 32/39;
-    grid-row: 8/11;
+    grid-row: 13/20;
 }
 
 #tortuga {
@@ -102,12 +134,21 @@ body {
     width: 100%;
 }
 
+.tortuga-texto-div{
+    grid-column:  35 ;
+    grid-row: 15;
+}
 .vibora {
     grid-column: 42/49;
-    grid-row: 7/10;
+    grid-row: 10/17;
 }
 
 #vibora {
     height: 100%;
     width: 100%;
+}
+
+.vibora-texto-div{
+    grid-column:  41 ;
+    grid-row: 8;
 }
