@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aprendiendo Mixe (Ayuujk)</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/efectos_img.css">
+</head>
+
+<body>
+    <img id="escenario1" src="assets/escenario1/escenario1.jpg" alt="">
+
+    <!-- MODAL DE INSTRUCCIONES -->
+
+    <div class="modal-container" id="modal-container">
+        <div class="modal">
+            <h1>Bienvenid@</h1>
+            <p>Desliza tu mouse en la pantalla y da click en los elementos que se mueven para escuchar su pronunciación
+                en Mixe de Tlahuitoltepec, Oaxaca</p>
+            <button id="btn-cerrar-modal">
+                Aceptar
+            </button>
+
+        </div>
+    </div>
+
+    <div class="grid">
+
+        <div class="sol">
+            <div>
+                <img id="sol" src="/assets/escenario1/sol.png" alt="xëëw">
+                <div class="popup" onclick="ocultarPopup(this)">
+                    <span class="popuptext" id="sol-texto">xëëw</br>sol</span>
+                </div>
+            </div>
+        </div>
+        <div class="arbol">
+            <div>
+                <img id="arbol" src="/assets/escenario1/arbol.png" alt="">
+            </div>
+
+        </div>
+        <div class="arbol-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="arbol-texto">ujts</br>arbol</span>
+            </div>
+        </div>
+
+        <div class="vaca-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="vaca-texto">tsakääj</br>vaca</span>
+            </div>
+        </div>
+
+        <div class="vaca">
+            <div>
+                <img id="vaca" src="/assets/escenario1/vaca.png" alt="">
+            </div>
+
+        </div>
+
+        <div class="lagartija-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="lagartija-texto">tek</br>lagartija</span>
+            </div>
+        </div>
+        <div class="lagartija">
+            <div>
+                <img id="lagartija" src="/assets/escenario1/lagartija.png">
+            </div>
+        </div>
+
+        <div class="lagartija-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="lagartija-texto">tek</br>lagartija</span>
+            </div>
+        </div>
+        <div class="cangrejo">
+            <div>
+                <img id="cangrejo" src="/assets/escenario1/cangrejo.png">
+            </div>
+        </div>
+
+        <div class="cangrejo-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="cangrejo-texto">eexy</br>cangrejo</span>
+            </div>
+        </div>
+
+        <div class="pez-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="pez-texto">äkx</br>pez</span>
+            </div>
+        </div>
+        <div class="pez">
+            <div><img id="pez" src="/assets/escenario1/pez.png"></div>
+        </div>
+
+        <div class="escorpion-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="escorpion-texto">käjpy</br>escorpion</span>
+            </div>
+        </div>
+        <div class="escorpion">
+            <div>
+                <img id="escorpion" src="/assets/escenario1/escorpion.png">
+            </div>
+        </div>
+
+        <div class="tortuga-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="tortuga-texto">pijy tyiuk</br>tortuga</span>
+            </div>
+        </div>
+        <div class="tortuga">
+            <div>
+                <img id="tortuga" src="/assets/escenario1/tortuga.png">
+            </div>
+
+        </div>
+
+        <div class="vibora-texto-div">
+            <div class="popup" onclick="ocultarPopup(this)">
+                <span class="popuptext" id="vibora-texto">tsää'ny</br>vibora</span>
+            </div>
+        </div>
+        <div class="vibora">
+            <div>
+                <img id="vibora" src="/assets/escenario1/vibora.png">
+            </div>
+
+        </div>
+
+    </div>
+
+    <audio id="sol-audio" src="assets/escenario1/audio/xeew.ogg"> </audio>
+    <audio id="arbol-audio" src="assets/escenario1/audio/ujts.ogg">
+        Tu navegador no tiene soporte para la etiqueta <code>audio</code> Favor de actualizar.
+    </audio>
+
+    <audio id="vaca-audio" src="assets/escenario1/audio/tsakaaj.ogg"> </audio>
+    <audio id="lagartija-audio" src="assets/escenario1/audio/tek.ogg"> </audio>
+    <audio id="pez-audio" src="assets/escenario1/audio/akx.ogg"> </audio>
+    <audio id="cangrejo-audio" src="assets/escenario1/audio/eexy.ogg"> </audio>
+    <audio id="escorpion-audio" src="assets/escenario1/audio/kajpy.ogg"> </audio>
+    <audio id="tortuga-audio" src="assets/escenario1/audio/pijytyuk.ogg"> </audio>
+    <audio id="vibora-audio" src="assets/escenario1/audio/tsaany.ogg"> </audio>
+
+
+    <script type="text/javascript" src="/js/proyecto.js"></script>
+</body>
+
+</html>

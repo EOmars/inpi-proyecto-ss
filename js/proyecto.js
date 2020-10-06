@@ -30,7 +30,7 @@ vaca.onclick = (e) => {
 
 pez.onclick = (e) => {
     document.getElementById('pez-texto').classList.add('show')
-    document.getElementById('pez-audio').play()    
+    document.getElementById('pez-audio').play()
 }
 
 cangrejo.onclick = (e) => {
@@ -55,4 +55,19 @@ vibora.onclick = (e) => {
 function ocultarPopup(e) {
     e.children[0].classList.toggle('show')
 }
+
+(
+    function loaded() {
+        console.log('loaded...')
+        const modal_container = document.getElementById('modal-container')
+        const close = document.getElementById('btn-cerrar-modal')
+
+        modal_container.classList.add('show')
+
+        close.onclick = ()=> {
+            modal_container.classList.remove('show');
+        }      
+
+    }
+)()
 
