@@ -24,10 +24,10 @@ export default class Scene1 extends Phaser.Scene {
 
         //imagenes
         this.load.image('background', 'assets/escenario1/escenario1.jpg')
-        
+
         this.load.image('arbol', 'assets/escenario1/arbol.png')
-        this.load.image('arbol-bn', 'assets/escenario1/arbol-bn.png')        
-        this.load.image('arbol-borde','assets/escenario1/arbol-borde.png')
+        this.load.image('arbol-bn', 'assets/escenario1/arbol-bn.png')
+        this.load.image('arbol-borde', 'assets/escenario1/arbol-borde.png')
 
         this.load.image('vaca', 'assets/escenario1/vaca.png')
         this.load.image('vaca-bn', 'assets/escenario1/vaca-bn.png')
@@ -40,15 +40,17 @@ export default class Scene1 extends Phaser.Scene {
         this.add.image(this.scale.width / 2, this.scale.height / 2, 'background')
             .setScale(2 / 3) // 1920 tam original del background
 
+        this.arbol = this.add.image(200, 250, 'arbol-bn').setScale(0.6)
+            .setName('arbol')
+            .setData('audio', 'ujts')
+            .setInteractive()
+            
         this.vaca = this.add.image(450, 450, 'vaca-bn').setScale(0.6)
             .setName('vaca')
             .setData('audio', 'tsakaaj')
             .setInteractive()
 
-        this.arbol = this.add.image(200, 250, 'arbol-bn').setScale(0.6)
-        .setName('arbol')
-        .setData('audio', 'ujts')
-        .setInteractive()
+
 
         this.input.on('gameobjectdown', this.onObjectClicked.bind(this))
         this.input.on('gameobjectover', this.onObjectOver)
@@ -72,7 +74,6 @@ export default class Scene1 extends Phaser.Scene {
     onObjectClicked(pointer, gameObject) {
         event.stopPropagation()
         gameObject.setState(1)
-        gameObject.setTexture(`${gameObject.name}`)
         this.sound.play(`${gameObject.getData('audio')}`)
     }
 }
