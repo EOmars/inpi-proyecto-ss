@@ -25,6 +25,55 @@ export default class Scene1 extends Phaser.Scene {
     }
 
     preload() {
+        const progressBar = this.add.graphics()
+        const progressBox = this.add.graphics()
+        progressBox.fillStyle(0x222222, 0.8)
+        progressBox.fillRect(50, 270, this.scale.width - 100, 50)
+
+        const width = this.cameras.main.width
+        const height = this.cameras.main.height
+        const loadingText = this.make.text({
+            x: width / 2,
+            y: height / 2 - 150,
+            text: "Tso`ntakp...",
+            style: {
+                font: '40px monospace',
+                fill: '#ffffff'
+            }
+        })
+        loadingText.setOrigin(0.5, 0.5);
+
+        const percentText = this.make.text({
+            x: width / 2,
+            y: height / 2 - 5,
+            text: '0%',
+            style: {
+                font: '25px monospace',
+                fill: '#ffffff'
+            }
+        })
+        percentText.setOrigin(0.5, 0.5);
+
+        this.load.on('progress', (value) => {
+            console.log("value: ", value)
+            progressBar.clear()
+            progressBar.fillStyle(0xffffff, 1)
+            progressBar.fillRect(50, 280, (this.scale.width - 100) * value, 30)
+            percentText.setText(parseInt(value * 100) + '%');
+        })
+
+        this.load.on('fileprogress', (file) => {
+            console.log(file.src)
+        })
+
+        this.load.on('complete', () => {
+            console.log('complete')
+            progressBar.destroy()
+            progressBox.destroy()
+            loadingText.destroy()
+            percentText.destroy()
+        })
+
         //audios
         this.load.audio('tsakaaj', `${this.SOUND_ROUTE}tsakaaj.ogg`)
         this.load.audio('ujts', `${this.SOUND_ROUTE}ujts.ogg`)
