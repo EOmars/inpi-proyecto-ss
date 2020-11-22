@@ -146,7 +146,7 @@ export default class Scene1 extends Phaser.Scene {
         gameObject.setTexture(gameObject.state ? `${gameObject.name}` : `${gameObject.name}-bn`)
     }
 
-    onObjectClicked(pointer, gameObject) {
+    onObjectClicked(pointer, gameObject, event) {
         event.stopPropagation()
         gameObject.setState(1)
         this.sound.play(`${gameObject.getData('audio')}`)
