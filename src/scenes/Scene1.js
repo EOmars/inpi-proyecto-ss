@@ -19,6 +19,7 @@ export default class Scene1 extends Phaser.Scene {
 
     IMAGE_ROUTE = 'assets/escenario1/'
     SOUND_ROUTE = 'assets/escenario1/audio/'
+    style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" }
 
     constructor() {
         super('game')
@@ -35,7 +36,7 @@ export default class Scene1 extends Phaser.Scene {
         const loadingText = this.make.text({
             x: width / 2,
             y: height / 2 - 150,
-            text: "Tso`ntakp...",
+            text: "Tso`ntäkp...",
             style: {
                 font: '40px monospace',
                 fill: '#ffffff'
@@ -55,7 +56,7 @@ export default class Scene1 extends Phaser.Scene {
         percentText.setOrigin(0.5, 0.5);
 
         this.load.on('progress', (value) => {
-            console.log("value: ", value)
+            // console.log("value: ", value)
             progressBar.clear()
             progressBar.fillStyle(0xffffff, 1)
             progressBar.fillRect(50, 280, (this.scale.width - 100) * value, 30)
@@ -63,7 +64,7 @@ export default class Scene1 extends Phaser.Scene {
         })
 
         this.load.on('fileprogress', (file) => {
-            console.log(file.src)
+            // console.log(file.src)
         })
 
         this.load.on('complete', () => {
@@ -133,47 +134,101 @@ export default class Scene1 extends Phaser.Scene {
 
         this.arbol = this.add.image(180, 220, 'arbol-bn').setScale(0.6)
             .setName('arbol')
-            .setData('audio', 'ujts')
+            .setData({
+                'audio': 'ujts',
+                'texto': 'ujts',
+                'traduccion': 'árbol',
+                'pos-x': 250,
+                'pos-y': 140
+            })
             .setInteractive()
 
         this.vaca = this.add.image(410, 450, 'vaca-bn').setScale(0.7)
             .setName('vaca')
-            .setData('audio', 'tsakaaj')
+            .setData({
+                'audio': 'tsakaaj',
+                'texto': 'tsakääj',
+                'traduccion': 'vaca',
+                'pos-x': 410,
+                'pos-y': 230
+            })
             .setInteractive()
 
-        this.cangrejo = this.add.image(700, 400, 'cangrejo-bn').setScale(0.9)
+        this.cangrejo = this.add.image(700, 350, 'cangrejo-bn').setScale(0.9)
             .setName('cangrejo')
-            .setData('audio', 'eexy')
+            .setData({
+                'audio': 'eexy',
+                'texto': 'eexy',
+                'traduccion': 'cangrejo',
+                'pos-x': 710,
+                'pos-y': 220
+            })
             .setInteractive()
 
         this.escorpion = this.add.image(700, 630, 'escorpion-bn').setScale(0.8)
             .setName('escorpion')
-            .setData('audio', 'kajpy')
+            .setData({
+                'audio': 'kajpy',
+                'texto': 'käjpy',
+                'traduccion': 'escorpion',
+                'pos-x': 800,
+                'pos-y': 630
+            })
             .setInteractive()
 
-        this.lagartija = this.add.image(200, 630, 'lagartija-bn').setScale(0.8)
+        this.lagartija = this.add.image(200, 620, 'lagartija-bn').setScale(0.8)
             .setName('lagartija')
-            .setData('audio', 'tek')
+            .setData({
+                'audio': 'tek',
+                'texto': 'tek',
+                'traduccion': 'lagartija',
+                'pos-x': 350,
+                'pos-y': 610
+            })
             .setInteractive()
 
         this.pez = this.add.image(630, 570, 'pez-bn').setScale(0.9)
             .setName('pez')
-            .setData('audio', 'akx')
+            .setData({
+                'audio': 'akx',
+                'texto': 'äkx ',
+                'traduccion': 'pez ',
+                'pos-x': 640,
+                'pos-y': 450
+            })
             .setInteractive()
 
         this.sol = this.add.image(500, 80, 'sol-bn').setScale(0.9)
             .setName('sol')
-            .setData('audio', 'xeew')
+            .setData({
+                'audio': 'xeew',
+                'texto': 'xëëw ',
+                'traduccion': 'sol',
+                'pos-x': 600,
+                'pos-y': 80
+            })
             .setInteractive()
 
         this.tortuga = this.add.image(900, 500, 'tortuga-bn').setScale(0.7)
             .setName('tortuga')
-            .setData('audio', 'pijytyuk')
+            .setData({
+                'audio': 'pijytyuk',
+                'texto': 'pijytyuk',
+                'traduccion': 'tortuga',
+                'pos-x': 1020,
+                'pos-y': 450
+            })
             .setInteractive()
 
         this.vibora = this.add.image(1000, 360, 'vibora-bn').setScale(0.6)
             .setName('vibora')
-            .setData('audio', 'tsaany')
+            .setData({
+                'audio': 'tsaany',
+                'texto': "tsää'ny",
+                'traduccion': 'vibora',
+                'pos-x': 1000,
+                'pos-y': 230
+            })
             .setInteractive()
 
         this.input.on('gameobjectdown', this.onObjectClicked.bind(this))
@@ -197,7 +252,23 @@ export default class Scene1 extends Phaser.Scene {
 
     onObjectClicked(pointer, gameObject, event) {
         event.stopPropagation()
-        gameObject.setState(1)
         this.sound.play(`${gameObject.getData('audio')}`)
+
+        if (!gameObject.state) {
+            const x = gameObject.getData('pos-x')
+            const y = gameObject.getData('pos-y')
+            const txtLength = gameObject.getData('texto').length > gameObject.getData('traduccion').length ?
+                gameObject.getData('texto').length : gameObject.getData('traduccion').length
+
+            const bar = this.add.graphics()
+            bar.fillStyle(0x000000, 0.5)
+            bar.fillRect(x - 10, y - 10, txtLength * 20, 90)
+
+            this.add.text(x, y,
+                gameObject.getData('texto') + "\n" + gameObject.getData('traduccion'),
+                this.style
+            )
+        }
+        gameObject.setState(1)
     }
 }
