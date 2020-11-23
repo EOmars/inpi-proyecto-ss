@@ -16,6 +16,7 @@ export default class Scene1 extends Phaser.Scene {
     sol
     tortuga
     vibora
+    menu
 
     IMAGE_ROUTE = 'assets/escenario1/'
     SOUND_ROUTE = 'assets/escenario1/audio/'
@@ -89,6 +90,7 @@ export default class Scene1 extends Phaser.Scene {
 
         //imagenes
         this.load.image('background', 'assets/escenario1/escenario1.jpg')
+        this.load.image('regresar', 'assets/flecha_izq.png')
 
         this.load.image('arbol', 'assets/escenario1/arbol.png')
         this.load.image('arbol-bn', 'assets/escenario1/arbol-bn.png')
@@ -231,6 +233,12 @@ export default class Scene1 extends Phaser.Scene {
             })
             .setInteractive()
 
+        this.regresar = this.add.image(1200, 50, 'regresar').setScale(0.3)
+            .setName('regresar')
+            .setInteractive()
+        this.menu = this.add.text(1130, 100, 'Wëmpet\nRegresar', this.style)
+
+
         this.input.on('gameobjectdown', this.onObjectClicked.bind(this))
         this.input.on('gameobjectover', this.onObjectOver)
         this.input.on('gameobjectout', this.onObjectOut)
@@ -242,16 +250,28 @@ export default class Scene1 extends Phaser.Scene {
 
     onObjectOver(pointer, gameObject, event) {
         event.stopPropagation()
+        if (gameObject.name == 'regresar') {
+            gameObject.setScale(0.4)
+            return
+        }
         gameObject.setTexture(`${gameObject.name}-borde`)
     }
 
     onObjectOut(pointer, gameObject, event) {
         event.stopPropagation()
+        if (gameObject.name == 'regresar') {
+            gameObject.setScale(0.3)
+            return
+        }
         gameObject.setTexture(gameObject.state ? `${gameObject.name}` : `${gameObject.name}-bn`)
     }
 
     onObjectClicked(pointer, gameObject, event) {
         event.stopPropagation()
+        if (gameObject.name == 'regresar') {
+            return window.location.href = '/'
+        }
+
         this.sound.play(`${gameObject.getData('audio')}`)
 
         if (!gameObject.state) {
